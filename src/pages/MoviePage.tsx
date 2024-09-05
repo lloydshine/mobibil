@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { API_KEY, Movie } from "../lib/globals";
 import axios from "axios";
 import Loading from "../components/Loading";
@@ -52,7 +52,7 @@ export default function MoviePage() {
         <div className="flex items-center gap-8">
           <button className="py-3 px-6 rounded-lg flex items-center gap-2 border-white border-2">
             <PlayCircleIcon />
-            <a href={`/watch?id=${movie?.id}`}>Watch Now</a>
+            <Link to={`/watch?id=${movie?.id}`}>Watch Now</Link>
           </button>
         </div>
       </section>
