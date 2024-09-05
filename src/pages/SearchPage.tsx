@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { API_KEY, Movie } from "../lib/globals";
 import axios from "axios";
 import Loading from "../components/Loading";
 
 export default function SearchPage() {
   const [searchParams] = useSearchParams();
-  const query = searchParams.get("query"); // Retrieve the 'id' query parameter
+  const query = searchParams.get("query"); // Retrieve the 'query' query parameter
+  const navigate = useNavigate(); // Hook for programmatic navigation
 
-  const [search, setSearch] = useState(query || "");
+  const [search, setSearch] = useState(query || "Avengers");
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -29,12 +30,16 @@ export default function SearchPage() {
     searchMovies();
   }, [search]);
 
+  const handleMovieClick = (id: number) => {
+    navigate(`/movie?id=${id}`);
+  };
+
   return (
     <main className="min-h-screen p-10 pt-[140px]">
       <section className="flex gap-4 mb-10">
         <h1 className="text-2xl">Search</h1>
         <input
-          className="bg-none outline-none bg-black border-b-2"
+          className="bg-none outline-none bg-inherit border-b-2"
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -46,6 +51,7 @@ export default function SearchPage() {
           <div
             key={movie.id}
             className="flex-shrink-0 h-[400px] w-[280px] cursor-pointer"
+            onClick={() => handleMovieClick(movie.id)}
           >
             <img
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}

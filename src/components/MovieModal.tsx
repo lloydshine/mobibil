@@ -1,4 +1,4 @@
-import { PlayCircleIcon, X } from "lucide-react";
+import { ChevronRightCircle, PlayCircleIcon, X } from "lucide-react";
 import { Movie, Video } from "../lib/globals";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -57,10 +57,14 @@ export default function MovieModal({
             <p>Overview</p>
             <p className="text-white/60">{movie.overview}</p>
           </div>
-          <div className="w-full">
+          <div className="w-full flex items-center gap-4">
             <button className="py-3 px-6 rounded-lg flex items-center gap-2 border-white border-2">
               <PlayCircleIcon />
               <a href={`/watch?id=${movie.id}`}>Watch Now</a>
+            </button>
+            <button className="py-3 px-6 rounded-lg flex items-center gap-2 border-white border-2">
+              <ChevronRightCircle />
+              <a href={`/movie?id=${movie.id}`}>Visit</a>
             </button>
           </div>
         </div>

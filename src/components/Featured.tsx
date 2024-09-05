@@ -1,4 +1,9 @@
-import { ChevronRightCircle, PlayCircleIcon, PlusCircleIcon, StarIcon } from "lucide-react";
+import {
+  ChevronRightCircle,
+  PlayCircleIcon,
+  PlusCircleIcon,
+  StarIcon,
+} from "lucide-react";
 import { API_KEY, Movie } from "../lib/globals";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -73,7 +78,7 @@ export default function Featured() {
           </button>
           <button className="py-3 px-6 rounded-lg flex items-center gap-2 border-white border-2">
             <ChevronRightCircle />
-            Visit
+            <a href={`/movie?id=${movie.id}`}>Visit</a>
           </button>
         </div>
       </div>

@@ -36,27 +36,27 @@ export function SidePanel() {
           </Link>
         </div>
         <div className="flex items-center">
-          <Link to="/videos" className={getLinkClass("/videos")}>
+          <Link to="/" className={getLinkClass("/videos")}>
             <Video className="w-6 h-6" />
           </Link>
         </div>
         <div className="flex items-center">
-          <Link to="/tv-shows" className={getLinkClass("/tv-shows")}>
+          <Link to="/" className={getLinkClass("/tv-shows")}>
             <Tv className="w-6 h-6" />
           </Link>
         </div>
         <div className="flex items-center">
-          <Link to="/trending" className={getLinkClass("/trending")}>
+          <Link to="/" className={getLinkClass("/trending")}>
             <TrendingUp className="w-6 h-6" />
           </Link>
         </div>
         <div className="flex items-center">
-          <Link to="/add" className={getLinkClass("/add")}>
+          <Link to="/" className={getLinkClass("/add")}>
             <Plus className="w-6 h-6" />
           </Link>
         </div>
         <div className="flex items-center">
-          <Link to="/shuffle" className={getLinkClass("/shuffle")}>
+          <Link to="/" className={getLinkClass("/shuffle")}>
             <Shuffle className="w-6 h-6" />
           </Link>
         </div>
