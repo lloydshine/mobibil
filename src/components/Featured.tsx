@@ -1,9 +1,4 @@
-import {
-  ChevronRightCircle,
-  PlayCircleIcon,
-  PlusCircleIcon,
-  StarIcon,
-} from "lucide-react";
+import { ChevronRightCircle, PlayCircleIcon, StarIcon } from "lucide-react";
 import { API_KEY, Movie } from "../lib/globals";
 import { useEffect, useState } from "react";
 import axios from "axios";
