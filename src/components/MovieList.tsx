@@ -1,13 +1,60 @@
+import { ChevronLeftCircle, ChevronRightCircle } from "lucide-react";
 import { Movie } from "../lib/globals";
+import { useRef } from "react";
 
-export function MovieList({ movies }: { movies: Movie[] }) {
+export function MovieList({
+  movies,
+  handleSelect,
+}: {
+  movies: Movie[];
+  handleSelect: (movie: Movie | null) => void;
+}) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: -300, // Adjust the scroll distance
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: 300, // Adjust the scroll distance
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <section className="my-10 space-y-10 px-4">
-      <h1 className="text-2xl font-bold">Popular</h1>
-      <section className="flex gap-4 max-w-full w-full overflow-x-auto scrollbar-hidden">
+    <section className="relative w-full">
+      <button
+        onClick={scrollLeft}
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 z-10"
+      >
+        <ChevronLeftCircle />
+      </button>
+      <button
+        onClick={scrollRight}
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 z-10"
+      >
+        <ChevronRightCircle />
+      </button>
+
+      <div
+        ref={scrollRef}
+        className="flex gap-4 max-w-full w-full overflow-x-auto scrollbar-hidden scroll-smooth"
+      >
         <div className="flex gap-4">
           {movies.map((movie) => (
-            <div key={movie.id} className="flex-shrink-0 h-[400px] w-[250px]">
+            <div
+              key={movie.id}
+              className="flex-shrink-0 h-[400px] w-[280px] cursor-pointer"
+              onClick={() => handleSelect(movie)}
+            >
               <img
                 src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                 alt={movie.title}
@@ -16,7 +63,7 @@ export function MovieList({ movies }: { movies: Movie[] }) {
             </div>
           ))}
         </div>
-      </section>
+      </div>
     </section>
   );
 }
