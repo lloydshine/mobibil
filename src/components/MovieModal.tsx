@@ -1,8 +1,9 @@
-import { ChevronRightCircle, Link, PlayCircleIcon, X } from "lucide-react";
+import { ChevronRightCircle, PlayCircleIcon, X } from "lucide-react";
 import { Movie, Video } from "../lib/globals";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_KEY } from "../lib/globals";
+import { Link } from "react-router-dom";
 
 export default function MovieModal({
   movie,
